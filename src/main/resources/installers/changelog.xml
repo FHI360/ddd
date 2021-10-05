@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="idris" id="20210120232001-00">
+        <sql>
+            CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+        </sql>
+    </changeSet>
+
+    <changeSet author="idris" id="20210402162934-01">
+        <createTable tableName="country">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="country_pkey"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="varchar(3)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <loadData tableName="country" separator="," file="installers/countries.csv"/>
+    </changeSet>
+
+    <changeSet author="idris" id="20210402162934-02">
+        <createTable tableName="state">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="state_pkey"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="state" baseColumnNames="country_id" constraintName="fk_state_country_id"
+                                 referencedTableName="country" referencedColumnNames="id"/>
+
+        <loadData tableName="state" separator="," file="installers/states.csv"/>
+    </changeSet>
+
+
+    <changeSet author="idris" id="20210402162934-09">
+        <createTable tableName="district">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="district_pkey"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="district" baseColumnNames="state_id"
+                                 constraintName="fk_district_state_id"
+                                 referencedTableName="state" referencedColumnNames="id"/>
+
+        <loadData tableName="district" separator=";" file="installers/province.csv"/>
+    </changeSet>
+
+    <changeSet author="idris" id="20210402162934-03">
+        <createTable tableName="facility">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="facility_pkey"/>
+            </column>
+            <column name="state_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="district_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="facility_type" type="VARCHAR(45)"/>
+            <column name="address1" type="VARCHAR(45)"/>
+            <column name="address2" type="VARCHAR(45)"/>
+            <column name="phone1" type="VARCHAR(25)"/>
+            <column name="phone2" type="VARCHAR(25)"/>
+            <column name="emailSender" type="VARCHAR(45)"/>
+            <column name="datim_id" type="VARCHAR(16)"/>
+            <column name="active" type="BOOL"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="facility" baseColumnNames="state_id"
+                                 constraintName="fk_facility_state_id"
+                                 referencedTableName="state" referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="facility" baseColumnNames="district_id"
+                                 constraintName="fk_facility_district_id"
+                                 referencedTableName="district" referencedColumnNames="id"/>
+
+
+        <loadData tableName="facility" separator="," file="installers/facilities_ci.csv"/>
+    </changeSet>
+
+
+    <changeSet author="idris" id="20210402162934-04">
+        <createTable tableName="regimen_type">
+            <column type="BIGSERIAL" name="id" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column type="varchar(128)" name="name">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="regimen">
+            <column type="BIGSERIAL" name="id" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column type="varchar(128)" name="name">
+                <constraints nullable="false"/>
+            </column>
+            <column name="regimen_type_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+<!--        <loadData tableName="regimen" separator="," file="installers/regimens.csv"/>-->
+        <loadData tableName="regimen" separator="," file="installers/regimens_ci.csv"/>
+        <loadData tableName="regimen_type" separator="," file="installers/regimen_types.csv"/>
+    </changeSet>
+
+    <changeSet author="idris" id="20210402162934-05">
+        <createTable tableName="outlet">
+            <column type="BIGSERIAL" name="id" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="facility_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(350)"/>
+            <column name="phone" type="varchar(350)"/>
+            <column name="type" type="varchar(350)"/>
+            <column name="username" type="varchar(350)"/>
+            <column name="email" type="varchar(350)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pin" type="varchar(350)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="archived" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="varchar(36)" defaultValueComputed="(uuid_generate_v4())::text">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="last_modified" type="timestamp" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="outlet" baseColumnNames="facility_id"
+                                 constraintName="fk_outlet_facility_id"
+                                 referencedTableName="facility" referencedColumnNames="id"/>
+
+        <loadData tableName="outlet" separator="," file="installers/pharmacy_ci.csv"/>
+
+    </changeSet>
+
+    <changeSet author="idris" id="20210402162934-11">
+        <createTable tableName="patient">
+            <column type="BIGSERIAL" name="id" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column type="varchar(32)" name="hospital_num">
+                <constraints nullable="false"/>
+            </column>
+            <column type="varchar(32)" name="unique_id"/>
+            <column type="varchar(16)" name="surname">
+                <constraints nullable="false"/>
+            </column>
+            <column type="varchar(32)" name="other_names"/>
+            <column type="varchar(16)" name="gender"/>
+            <column type="varchar(64)" name="address"/>
+            <column type="varchar(16)" name="phone"/>
+            <column type="varchar(64)" name="date_started"/>
+            <column type="varchar(64)" name="last_clinic_stage"/>
+            <column type="DOUBLE(22)" name="last_viral_load"/>
+            <column type="varchar(64)" name="date_last_viral_load"/>
+            <column type="varchar(64)" name="viral_load_due_date"/>
+            <column type="varchar(64)" name="viral_load_type"/>
+            <column type="varchar(64)" name="date_last_refill"/>
+            <column type="varchar(64)" name="date_next_refill"/>
+            <column type="varchar(64)" name="date_last_clinic"/>
+            <column type="varchar(64)" name="date_next_clinic"/>
+            <column name="reason_discontinued" type="varchar(256)"/>
+            <column name="date_discontinued" type="date"/>
+            <column type="bigint" name="discontinued"/>
+            <column name="date_visit" type="date"/>
+            <column type="date" name="date_birth">
+                <constraints nullable="false"/>
+            </column>
+            <column type="bigint" name="facility_id">
+                <constraints nullable="false"/>
+            </column>
+            <column type="bigint" name="outlet_id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="archived" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="varchar(36)" defaultValueComputed="(uuid_generate_v4())::text">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="last_modified" type="timestamp" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="arv_received" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="patient" baseColumnNames="facility_id"
+                                 constraintName="fk_patient_facility_id"
+                                 referencedTableName="facility" referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="patient" baseColumnNames="outlet_id"
+                                 constraintName="fk_patient_outlet_id"
+                                 referencedTableName="outlet" referencedColumnNames="id"/>
+
+
+    </changeSet>
+
+
+
+    <changeSet author="idris" id="20210402162934-07">
+        <createTable tableName="arv">
+            <column type="BIGSERIAL" name="id" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="patient_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="facility_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_visit" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_next_refill" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_next_clinic" type="date"/>
+            <column name="viral_load_due_date" type="varchar(254)"/>
+            <column name="date_started_tb_treatment" type="date"/>
+            <column name="body_weight" type="numeric">
+                <constraints checkConstraint="body_weight >= 0 and body_weight &lt;= 500"/>
+            </column>
+            <column name="height" type="numeric">
+                <constraints checkConstraint="height >= 0 and height &lt;= 250"/>
+            </column>
+            <column name="ipt" type="boolean"/>
+            <column name="bp" type="varchar(7)"/>
+            <column name="bmi" type="numeric"/>
+            <column name="bmi_category" type="varchar(16)"/>
+            <column name="coughing" type="boolean"/>
+            <column name="fever" type="boolean"/>
+            <column name="weight_loss" type="boolean"/>
+            <column name="sweating" type="boolean"/>
+            <column name="swelling_neck" type="boolean"/>
+            <column name="tb_treatment" type="boolean"/>
+            <column name="tb_referred" type="boolean"/>
+            <column name="itp_eligible" type="boolean"/>
+            <column name="regimen_1_id" type="bigint"/>
+            <column name="duration_1" type="numeric">
+                <constraints checkConstraint="duration_1 > 0"/>
+            </column>
+            <column name="quantity_prescribed_1" type="numeric">
+                <constraints checkConstraint="quantity_prescribed_1 > 0"/>
+            </column>
+            <column name="quantity_dispensed_1" type="numeric">
+                <constraints checkConstraint="quantity_dispensed_1 >= 0"/>
+            </column>
+            <column name="regimen_2_id" type="bigint"/>
+            <column name="duration_2" type="numeric">
+                <constraints checkConstraint="duration_2 > 0"/>
+            </column>
+            <column name="quantity_prescribed_2" type="numeric">
+                <constraints checkConstraint="quantity_prescribed_2 > 0"/>
+            </column>
+            <column name="quantity_dispensed_2" type="numeric">
+                <constraints checkConstraint="quantity_dispensed_2 >= 0"/>
+            </column>
+            <column name="regimen_3_id" type="bigint"/>
+            <column name="duration_3" type="numeric">
+                <constraints checkConstraint="duration_3 > 0"/>
+            </column>
+            <column name="quantity_prescribed_3" type="numeric">
+                <constraints checkConstraint="quantity_prescribed_3 > 0"/>
+            </column>
+            <column name="quantity_dispensed_3" type="numeric">
+                <constraints checkConstraint="quantity_dispensed_3 >= 0"/>
+            </column>
+            <column name="regimen_4_id" type="bigint"/>
+            <column name="duration_4" type="numeric">
+                <constraints checkConstraint="duration_4 > 0"/>
+            </column>
+            <column name="quantity_prescribed_4" type="numeric">
+                <constraints checkConstraint="quantity_prescribed_4 > 0"/>
+            </column>
+            <column name="quantity_dispensed_4" type="numeric">
+                <constraints checkConstraint="quantity_dispensed_4 >= 0"/>
+            </column>
+            <column name="adverse_issue" type="boolean"/>
+            <column name="adverse_report" type="varchar(256)"/>
+
+
+            <column name="missed_refill" type="boolean"/>
+            <column name="missed_refills" type="numeric">
+                <constraints checkConstraint="missed_refills > 0"/>
+            </column>
+            <column name="archived" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="varchar(36)" defaultValueComputed="(uuid_generate_v4())::text">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="last_modified" type="timestamp" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="arv" baseColumnNames="patient_id" constraintName="fk_arv_patient_id"
+                                 referencedTableName="patient" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="arv" baseColumnNames="facility_id" constraintName="fk_arv_facility_id"
+                                 referencedTableName="facility" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="arv" baseColumnNames="regimen_1_id" constraintName="fk_arv_regimen_1_id"
+                                 referencedTableName="regimen" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="arv" baseColumnNames="regimen_2_id" constraintName="fk_arv_regimen_2_id"
+                                 referencedTableName="regimen" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="arv" baseColumnNames="regimen_3_id" constraintName="fk_arv_regimen_3_id"
+                                 referencedTableName="regimen" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="arv" baseColumnNames="regimen_4_id" constraintName="fk_arv_regimen_4_id"
+                                 referencedTableName="regimen" referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet author="idris" id="20210402162934-18">
+        <createTable tableName="device_config">
+            <column type="BIGSERIAL" name="id" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="device_id" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="facility_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="device_config" baseColumnNames="facility_id"
+                                 constraintName="fk_device_config_facility_id"
+                                 referencedTableName="facility" referencedColumnNames="id"/>
+    </changeSet>
+
+
+    <changeSet author="idris" id="20210402162934-16">
+        <createTable tableName="users">
+            <column type="BIGSERIAL" name="id" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="facility_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <addForeignKeyConstraint baseTableName="users" baseColumnNames="facility_id"
+                                 constraintName="fk_users_facility_id"
+                                 referencedTableName="facility" referencedColumnNames="id"/>
+
+        <loadData tableName="users" separator="," file="installers/users.csv"/>
+
+    </changeSet>
+
+<!--    @Id-->
+<!--    @GeneratedValue(strategy = GenerationType.IDENTITY)-->
+<!--    private Long id;-->
+<!--    private String name;-->
+<!--    private String basicUnit;-->
+<!--    private boolean archived = false;-->
+<!--    @ManyToOne-->
+<!--    private Regimen regimen;-->
+
+    <changeSet author="idris" id="20210402162934-17">
+        <createTable tableName="drug">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="drug_pkey"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="basic_unit" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="archived" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="regimen_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="drug" baseColumnNames="regimen_id"
+                                 constraintName="fk_drug_regimen_id"
+                                 referencedTableName="regimen" referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet author="idris" id="20210402162934-19">
+        <createTable tableName="inventory">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="inventory_pkey"/>
+            </column>
+<!--            <column name="pin_code" type="BIGINT">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="drug_name" type="varchar(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+            <column name="batch_number" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expire_date" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="DOUBLE(22)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="archived" type="boolean" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="regimen_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="outlet_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="inventory" baseColumnNames="regimen_id"
+                                 constraintName="fk_inventory_regimen_id"
+                                 referencedTableName="regimen" referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="inventory" baseColumnNames="outlet_id"
+                                 constraintName="fk_inventory_outlet_id"
+                                 referencedTableName="outlet" referencedColumnNames="id"/>
+    </changeSet>
+
+<!--    <changeSet author="idris" id="20210402162934-21">-->
+<!--        <addColumn catalogName="pat"-->
+<!--                   schemaName="public"-->
+<!--                   tableName="patient">-->
+<!--            <column name="arv_received" type="boolean" defaultValue="false">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--        </addColumn>-->
+<!--    </changeSet>-->
+</databaseChangeLog>
+
+

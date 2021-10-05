@@ -1,0 +1,25 @@
+id,name,regimen_type_id
+1,Cotrimoxazole 960mg,8
+2,Cotrimoxazole 240mg/5ml,8
+3,INH 100mg,15
+4,INH 300mg,15
+5,HP 300mg/300mg,15
+6,INH (300mg) + CTX (960mg) + Vit B6 (25mg),15
+7,ABC (300mg) + 3TC (150mg) + ATV/r (300mg/100mg),1
+8,ABC (600mg) + 3TC (300mg) + DTG (50mg),1
+9,ABC (300mg) + 3TC (150mg) + EFV (600mg),1
+10,ABC (120mg) + 3TC (60mg) + LPV/r (100mg/25mg),1
+11,ABC (300mg) + 3TC (150mg) + LPV/r (200mg/50mg),1
+12,ABC (120mg) + 3TC (60mg) + LPV/r (40mg/10mg),1
+13,AZT (300mg) + 3TC (150mg) + ABC (300mg),1
+14,AZT (300mg) + 3TC (150mg) + ATV/r (300mg/100mg),1
+15,AZT (60 mg) + 3TC (30 mg) + DTG (10 mg),1
+16,AZT (300mg) + 3TC (150mg) + DTG (50mg),1
+17,AZT (300mg) + 3TC (150mg) + EFV (600mg),1
+18,AZT (60mg) + 3TC (30mg) + EFV (200mg),1
+19,AZT (300mg) + 3TC (150mg) + LPV/r (200mg/50mg),1
+20,AZT (300mg) + 3TC (150mg) + TDF (300mg),1
+21,TDF (300mg) + 3TC (300mg) + ATV/r (300mg/100mg),1
+22,TDF (300mg) + 3TC (300mg) + DTG (50mg),1
+23,TDF (300mg) + 3TC (300mg) + EFV (400mg),1
+24,TDF (300mg) + 3TC (300mg) + LPV/r (200mg/50mg),1

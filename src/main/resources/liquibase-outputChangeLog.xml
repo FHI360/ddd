@@ -1,0 +1,1210 @@
+<!--<?xml version="1.1" encoding="UTF-8" standalone="no"?>-->
+<!--<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"-->
+<!--                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"-->
+<!--                   xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-1">-->
+<!--        <createTable tableName="drug_group">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="drug_group_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="uuid" type="VARCHAR"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-2">-->
+<!--        <createTable tableName="organisation_unit">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="organisation_unit_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR(100)"/>-->
+<!--            <column name="description" type="VARCHAR(300)"/>-->
+<!--            <column name="organisation_unit_level_id" type="BIGINT"/>-->
+<!--            <column name="parent_organisation_unit_id" type="BIGINT"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="address" type="VARCHAR"/>-->
+<!--            <column name="phone" type="VARCHAR"/>-->
+<!--            <column name="email" type="VARCHAR"/>-->
+<!--            <column name="latitude" type="FLOAT8"/>-->
+<!--            <column name="longitude" type="FLOAT8"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-3">-->
+<!--        <createTable tableName="person">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="person_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="dob" type="date"/>-->
+<!--            <column name="dob_estimated" type="BOOLEAN"/>-->
+<!--            <column name="first_name" type="VARCHAR(255)"/>-->
+<!--            <column name="last_name" type="VARCHAR(255)"/>-->
+<!--            <column name="other_names" type="VARCHAR(255)"/>-->
+<!--            <column name="education_id" type="BIGINT"/>-->
+<!--            <column name="gender_id" type="BIGINT"/>-->
+<!--            <column name="occupation_id" type="BIGINT"/>-->
+<!--            <column name="marital_status_id" type="BIGINT"/>-->
+<!--            <column name="person_title_id" type="BIGINT"/>-->
+<!--            <column name="uuid" type="VARCHAR"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-4">-->
+<!--        <createTable tableName="hello">-->
+<!--            <column name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="hello_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="message" type="VARCHAR(255)"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-5">-->
+<!--        <createTable tableName="ward">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="ward_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="uuid" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-6">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="drug_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-7">-->
+<!--        <createTable tableName="radiology">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="radiology_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="patient_id" type="BIGINT"/>-->
+<!--            <column name="date_ordered" type="date"/>-->
+<!--            <column name="type_test" type="VARCHAR(100)"/>-->
+<!--            <column name="test_area" type="VARCHAR(100)"/>-->
+<!--            <column name="image" type="BYTEA"/>-->
+<!--            <column name="date_reported" type="date"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-8">-->
+<!--        <createTable tableName="person_contact">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="person_contact_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="mobile_phone_number" type="VARCHAR"/>-->
+<!--            <column name="alternate_phone_number" type="VARCHAR"/>-->
+<!--            <column name="email" type="VARCHAR"/>-->
+<!--            <column name="zip_code" type="VARCHAR"/>-->
+<!--            <column name="city" type="VARCHAR"/>-->
+<!--            <column name="street" type="VARCHAR"/>-->
+<!--            <column name="landmark" type="VARCHAR"/>-->
+<!--            <column name="country_id" type="BIGINT">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="state_id" type="BIGINT">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="province_id" type="BIGINT"/>-->
+<!--            <column name="person_id" type="BIGINT">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="alternate__phone_number" type="VARCHAR(255)"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-9">-->
+<!--        <createTable tableName="appointment">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="appointment_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="created_by" type="VARCHAR(255)"/>-->
+<!--            <column name="date" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="detail" type="JSONB">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--            <column name="patient_id" type="BIGINT"/>-->
+<!--            <column name="visit_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-10">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="organisation_unit_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-11">-->
+<!--        <createTable tableName="global_variable">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="global_variable_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR(200)"/>-->
+<!--            <column name="description" type="VARCHAR(300)"/>-->
+<!--            <column name="format" type="VARCHAR(15)"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-12">-->
+<!--        <createTable tableName="sample_manifest">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="sample_manifest_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="manifest_id" type="VARCHAR(45)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="sending_facility_id" type="VARCHAR(45)"/>-->
+<!--            <column name="sending_facility_name" type="VARCHAR(200)"/>-->
+<!--            <column name="receiving_lab_id" type="VARCHAR(45)"/>-->
+<!--            <column name="receiving_lab_name" type="VARCHAR(200)"/>-->
+<!--            <column name="lab_number" type="VARCHAR(45)"/>-->
+<!--            <column name="sample_type" type="VARCHAR(45)"/>-->
+<!--            <column name="sample_ordered_by" type="VARCHAR(100)"/>-->
+<!--            <column name="date_sample_ordered" type="date"/>-->
+<!--            <column name="time_sample_ordered" type="TIME WITHOUT TIME ZONE"/>-->
+<!--            <column name="sample_collected_by" type="VARCHAR(100)"/>-->
+<!--            <column name="date_sample_collected" type="date"/>-->
+<!--            <column name="time_sample_collected" type="TIME WITHOUT TIME ZONE"/>-->
+<!--            <column name="sample_transferred_by" type="VARCHAR"/>-->
+<!--            <column name="date_sample_transferred" type="date"/>-->
+<!--            <column name="time_sample_transferred" type="TIME WITHOUT TIME ZONE"/>-->
+<!--            <column name="sample_dispatched_by" type="VARCHAR"/>-->
+<!--            <column name="date_sample_dispatched" type="date"/>-->
+<!--            <column name="time_sample_dispatched" type="TIME WITHOUT TIME ZONE"/>-->
+<!--            <column name="total_sample_shipment" type="INTEGER"/>-->
+<!--            <column name="courier_name" type="VARCHAR"/>-->
+<!--            <column name="courier_phone_number" type="VARCHAR"/>-->
+<!--            <column name="patient_id" type="BIGINT"/>-->
+<!--            <column name="dispatched" type="BOOLEAN"/>-->
+<!--            <column name="viral_load_indication" type="VARCHAR(300)"/>-->
+<!--            <column name="lab_order_priority" type="VARCHAR(100)"/>-->
+<!--            <column name="date_approved" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_assayed" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_result_dispatched" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_result_reported" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_sample_received_lab" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="pcr_lab_sample_number" type="VARCHAR(255)"/>-->
+<!--            <column name="sample_status" type="VARCHAR(255)"/>-->
+<!--            <column name="sample_testable" type="BOOLEAN"/>-->
+<!--            <column name="test_result" type="VARCHAR(255)"/>-->
+<!--            <column name="visit_date" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-13">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="drug_inventory_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-14">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="organisation_unit_hierarchy_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-15">-->
+<!--        <createTable tableName="menu">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="menu_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="module_name" type="VARCHAR"/>-->
+<!--            <column name="description" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="created_by" type="VARCHAR(255)"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--            <column name="module_id" type="BIGINT"/>-->
+<!--            <column name="url" type="VARCHAR(255)"/>-->
+<!--            <column name="uuid" type="VARCHAR(255)"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-16">-->
+<!--        <createTable tableName="application_codeset_standard_codeset">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true"-->
+<!--                             primaryKeyName="application_codeset_standard_codeset_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="application_codeset_id" type="BIGINT"/>-->
+<!--            <column name="standard_codeset_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-17">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="organisation_unit_identifier_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-18">-->
+<!--        <createTable tableName="lab_test">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="lab_test_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="lab_test_group_id" type="BIGINT"/>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="unit_measurement" type="VARCHAR"/>-->
+<!--            <column name="uuid" type="VARCHAR"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-19">-->
+<!--        <createTable tableName="role">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="role_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-20">-->
+<!--        <createTable tableName="organisation_unit_level">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="organisational_unit_level_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR(100)"/>-->
+<!--            <column name="description" type="VARCHAR(300)"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="status" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-21">-->
+<!--        <createTable tableName="person_relative">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="person_relative_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="address" type="VARCHAR(255)"/>-->
+<!--            <column name="alternate_phone_number" type="VARCHAR(255)"/>-->
+<!--            <column name="email" type="VARCHAR(255)"/>-->
+<!--            <column name="first_name" type="VARCHAR(255)"/>-->
+<!--            <column name="last_name" type="VARCHAR(255)"/>-->
+<!--            <column name="mobile_phone_number" type="VARCHAR(255)"/>-->
+<!--            <column name="other_names" type="VARCHAR(255)"/>-->
+<!--            <column name="relationship_type_id" type="BIGINT"/>-->
+<!--            <column name="person_id" type="BIGINT"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-22">-->
+<!--        <createTable tableName="authority">-->
+<!--            <column name="name" type="VARCHAR(50)">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="authority_pkey"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-23">-->
+<!--        <createTable tableName="standard_codeset">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="standard_codeset_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="code" type="VARCHAR"/>-->
+<!--            <column name="description" type="VARCHAR"/>-->
+<!--            <column name="standard_codeset_source_id" type="BIGINT"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="created_by" type="VARCHAR(255)"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-24">-->
+<!--        <createTable tableName="jasper_report_info">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="jasper_template_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR(100)"/>-->
+<!--            <column name="description" type="VARCHAR(300)"/>-->
+<!--            <column name="program_code" type="VARCHAR"/>-->
+<!--            <column name="datasource" type="VARCHAR(300)"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="parameter_resource_object" type="JSON"/>-->
+<!--            <column name="template" type="VARCHAR"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-25">-->
+<!--        <createTable tableName="module">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="module_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="active" type="BOOLEAN">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="artifact_id" type="VARCHAR(255)"/>-->
+<!--            <column name="base_package" type="VARCHAR(255)"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="description" type="VARCHAR(255)"/>-->
+<!--            <column name="name" type="VARCHAR(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="version" type="VARCHAR(255)"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIME WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="module_type" type="INTEGER"/>-->
+<!--            <column name="uuid" type="VARCHAR"/>-->
+<!--            <column name="date_installed" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="installed_by" type="VARCHAR(255)"/>-->
+<!--            <column name="status" type="INTEGER"/>-->
+<!--            <column name="main" type="VARCHAR(255)"/>-->
+<!--            <column name="batch_no" type="VARCHAR"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-26">-->
+<!--        <createTable tableName="visit">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="patient_visit_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="date_visit_end" type="date"/>-->
+<!--            <column name="date_visit_start" type="date"/>-->
+<!--            <column name="time_visit_end" type="TIME WITHOUT TIME ZONE"/>-->
+<!--            <column name="time_visit_start" type="TIME WITHOUT TIME ZONE"/>-->
+<!--            <column name="patient_id" type="BIGINT"/>-->
+<!--            <column name="visit_type_id" type="BIGINT"/>-->
+<!--            <column name="date_next_appointment" type="date"/>-->
+<!--            <column name="uuid" type="VARCHAR"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="type_patient" type="INTEGER"/>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-27">-->
+<!--        <createTable tableName="permission">-->
+<!--            <column name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="priviledge_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="description" type="VARCHAR"/>-->
+<!--            <column name="name" type="VARCHAR(255)"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-28">-->
+<!--        <createTable tableName="lab_test_group">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="lab_test_category_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="uuid" type="VARCHAR"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-29">-->
+<!--        <createTable tableName="standard_codeset_source">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="standard_codeset_source_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="description" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="created_by" type="VARCHAR(255)"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-30">-->
+<!--        <createTable tableName="report_info">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="report_info_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="description" type="VARCHAR(255)"/>-->
+<!--            <column name="name" type="VARCHAR(255)"/>-->
+<!--            <column name="program_code" type="VARCHAR(255)"/>-->
+<!--            <column name="template" type="VARCHAR"/>-->
+<!--            <column name="resource_object" type="JSONB"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-31">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="regimen_drug_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-32">-->
+<!--        <createTable tableName="module_dependency">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="module_dependency_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="artifact_id" type="VARCHAR(255)"/>-->
+<!--            <column name="module_id" type="BIGINT"/>-->
+<!--            <column name="version" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-33">-->
+<!--        <createTable tableName="radiology_test_group">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="radiology_test_group_pkey1"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-34">-->
+<!--        <createTable tableName="encounter">-->
+<!--            <column autoIncrement="true" name="id" type="INTEGER">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="encounter_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="patient_id" type="BIGINT">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="visit_id" type="BIGINT">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="form_code" type="VARCHAR">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="program_code" type="VARCHAR">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="date_encounter" type="date">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="uuid" type="VARCHAR"/>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-35">-->
+<!--        <createTable tableName="application_user_role">-->
+<!--            <column name="user_id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="application_user_roles_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="role_id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="application_user_roles_pkey"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-36">-->
+<!--        <createTable tableName="organisation_unit_identifier">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="organisation_unit_identifier_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--            <column name="code" type="VARCHAR"/>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-37">-->
+<!--        <createTable tableName="drug_inventory">-->
+<!--            <column autoIncrement="true" name="id" type="INTEGER">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="drug_inventory_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="drug_id" type="BIGINT"/>-->
+<!--            <column name="brand_name" type="VARCHAR"/>-->
+<!--            <column name="strength" type="VARCHAR"/>-->
+<!--            <column name="pack_size" type="INTEGER"/>-->
+<!--            <column name="dosage_form" type="VARCHAR"/>-->
+<!--            <column name="uuid" type="VARCHAR"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-38">-->
+<!--        <createTable tableName="role_permission">-->
+<!--            <column name="role_id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="role_permissions_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="permission_id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="role_permissions_pkey"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-39">-->
+<!--        <createTable tableName="regimen_line">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="regimen_line_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="created_by" type="VARCHAR(255)"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-40">-->
+<!--        <createTable tableName="form_data">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="form_data_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="data" type="JSONB"/>-->
+<!--            <column name="encounter_id" type="BIGINT"/>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-41">-->
+<!--        <createTable tableName="data_source">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="data_source_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="description" type="VARCHAR(255)"/>-->
+<!--            <column name="format" type="VARCHAR(255)"/>-->
+<!--            <column name="name" type="VARCHAR(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-42">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="regimen_line_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-43">-->
+<!--        <createTable tableName="application_user_organisation_unit">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true"-->
+<!--                             primaryKeyName="application_user_organisation_unit_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="application_user_id" type="BIGINT"/>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--            <column name="created_by" type="VARCHAR(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-44">-->
+<!--        <createTable tableName="application_user">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="user_name" type="VARCHAR">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="password" type="VARCHAR">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="active" type="INTEGER"/>-->
+<!--            <column name="date_created" type="date"/>-->
+<!--            <column name="last_modified_by" type="VARCHAR"/>-->
+<!--            <column name="date_last_modified" type="date"/>-->
+<!--            <column name="activation_key" type="VARCHAR"/>-->
+<!--            <column name="date_reset" type="date"/>-->
+<!--            <column name="reset_key" type="VARCHAR"/>-->
+<!--            <column name="uploaded" type="INTEGER"/>-->
+<!--            <column name="time_uploaded" type="TIME WITH TIME ZONE"/>-->
+<!--            <column name="person_id" type="BIGINT">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="email" type="VARCHAR(255)"/>-->
+<!--            <column name="gender" type="VARCHAR(255)"/>-->
+<!--            <column name="phone_number" type="VARCHAR(255)"/>-->
+<!--            <column name="current_organisation_unit_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-45">-->
+<!--        <createTable tableName="application_codeset">-->
+<!--            <column autoIncrement="true" name="id" type="INTEGER">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="application_codeset2_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="codeset_group" type="VARCHAR"/>-->
+<!--            <column name="display" type="VARCHAR"/>-->
+<!--            <column name="language" type="VARCHAR"/>-->
+<!--            <column name="version" type="VARCHAR"/>-->
+<!--            <column name="code" type="VARCHAR"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="active" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-46">-->
+<!--        <createTable tableName="patient">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="patient_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="date_registration" type="date">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="person_id" type="BIGINT">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="patient_number" type="VARCHAR">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="uuid" type="VARCHAR"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-47">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="regimen_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-48">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="drug_group_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-49">-->
+<!--        <createTable tableName="radiology_test">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="radiology_test_group_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="group_id" type="BIGINT"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-50">-->
+<!--        <createTable tableName="form">-->
+<!--            <column autoIncrement="true" name="id" type="INTEGER">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="form_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="code" type="VARCHAR"/>-->
+<!--            <column name="program_code" type="VARCHAR"/>-->
+<!--            <column name="resource_object" type="JSONB"/>-->
+<!--            <column name="resource_path" type="VARCHAR"/>-->
+<!--            <column name="version" type="VARCHAR"/>-->
+<!--            <column name="usage_status" type="INTEGER"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="created_by" type="VARCHAR"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="form_precedence" type="JSONB"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-51">-->
+<!--        <createTable tableName="drug">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="drug_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="code" type="VARCHAR"/>-->
+<!--            <column name="drug_group_id" type="BIGINT"/>-->
+<!--            <column name="created_by" type="VARCHAR(255)"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-52">-->
+<!--        <createTable tableName="organisation_unit_hierarchy">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="organisation_unit_hierarchy_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--            <column name="parent_organisation_unit_id" type="BIGINT"/>-->
+<!--            <column name="organisation_unit_level_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-53">-->
+<!--        <createTable tableName="regimen">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="regimen_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="regimen_line_id" type="BIGINT"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="created_by" type="VARCHAR(255)"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--        </createTable>-->
+<!--&lt;!&ndash;        <loadData tableName="regimen" separator="," file="installers/regimens.csv"/>&ndash;&gt;-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-54">-->
+<!--        <createTable tableName="icd">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="icd_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="abbreviated_description" type="VARCHAR(255)"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--            <column name="category_code" type="VARCHAR(255)"/>-->
+<!--            <column name="category_title" type="VARCHAR(255)"/>-->
+<!--            <column name="diagnosis_code" type="VARCHAR(255)"/>-->
+<!--            <column name="full_code" type="VARCHAR(255)"/>-->
+<!--            <column name="full_description" type="VARCHAR(255)"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-55">-->
+<!--        <createTable tableName="application_user_patient">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="application_user_patient_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="patient_id" type="BIGINT"/>-->
+<!--            <column name="application_user_id" type="BIGINT"/>-->
+<!--            <column name="organisation_unit_id" type="BIGINT"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--            <column name="created_by" type="VARCHAR(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-56">-->
+<!--        <createTable tableName="regimen_drug">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="regimen_drug_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="regimen_id" type="BIGINT">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="drug_id" type="BIGINT">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="created_by" type="VARCHAR(255)"/>-->
+<!--            <column name="date_created" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="date_modified" type="TIMESTAMP WITHOUT TIME ZONE"/>-->
+<!--            <column name="modified_by" type="VARCHAR(255)"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-57">-->
+<!--        <createTable tableName="program">-->
+<!--            <column autoIncrement="true" name="id" type="BIGINT">-->
+<!--                <constraints nullable="false" primaryKey="true" primaryKeyName="program_pkey"/>-->
+<!--            </column>-->
+<!--            <column name="name" type="VARCHAR"/>-->
+<!--            <column name="code" type="VARCHAR">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="module_id" type="BIGINT"/>-->
+<!--            <column name="archived" type="INTEGER"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-58">-->
+<!--        <addForeignKeyConstraint baseColumnNames="parent_organisation_unit_id"-->
+<!--                                 baseTableName="organisation_unit_hierarchy"-->
+<!--                                 constraintName="parent_organisation_unit_id_fk" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="organisation_unit" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-59">-->
+<!--        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="person_contact"-->
+<!--                                 constraintName="fk_person_contact_person" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+<!--                                 referencedTableName="person" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-60">-->
+<!--        <addForeignKeyConstraint baseColumnNames="organisation_unit_id" baseTableName="appointment"-->
+<!--                                 constraintName="fkeu9ruy3ddyfd7981aa4hpxcsv" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="organisation_unit" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-61">-->
+<!--        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="person_relative"-->
+<!--                                 constraintName="fkd64wahlx8neq4onjybh9xbny3" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="person" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-62">-->
+<!--        <addForeignKeyConstraint baseColumnNames="module_id" baseTableName="program"-->
+<!--                                 constraintName="program_module_id_fkey" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+<!--                                 referencedTableName="module" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-63">-->
+<!--        <addUniqueConstraint columnNames="name" constraintName="uk_f73dsvaor0f4cycvldyt2idf1" tableName="module"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-64">-->
+<!--        <addUniqueConstraint columnNames="base_package" constraintName="uk_rxqkmhg2y507iqe53my30p6sv"-->
+<!--                             tableName="module"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-65">-->
+<!--        <createIndex indexName="unique_name" tableName="permission" unique="true">-->
+<!--            <column name="name"/>-->
+<!--        </createIndex>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-66">-->
+<!--        <addForeignKeyConstraint baseColumnNames="lab_test_group_id" baseTableName="lab_test"-->
+<!--                                 constraintName="lab_test_group_id_fk" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+<!--                                 referencedTableName="lab_test_group" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-67">-->
+<!--        <addForeignKeyConstraint baseColumnNames="module_id" baseTableName="module_dependency"-->
+<!--                                 constraintName="fknxcwptmxmsroe0mxfotbs1nr6" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="module" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-68">-->
+<!--        <addForeignKeyConstraint baseColumnNames="visit_id" baseTableName="encounter" constraintName="fk_visit_id"-->
+<!--                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="visit" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-69">-->
+<!--        <addForeignKeyConstraint baseColumnNames="encounter_id" baseTableName="form_data"-->
+<!--                                 constraintName="form_data_encounter_id_fkey" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="encounter" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-70">-->
+<!--        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="application_user_role"-->
+<!--                                 constraintName="fkjqak205427w4trqe5yib9am1c" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="role" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-71">-->
+<!--        <addForeignKeyConstraint baseColumnNames="organisation_unit_id" baseTableName="organisation_unit_identifier"-->
+<!--                                 constraintName="fk_organisation_unit_id" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+<!--                                 referencedTableName="organisation_unit" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-72">-->
+<!--        <addForeignKeyConstraint baseColumnNames="permission_id" baseTableName="role_permission"-->
+<!--                                 constraintName="fkclluu29apreb6osx6ogt4qe16" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="permission" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-73">-->
+<!--        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="role_permission"-->
+<!--                                 constraintName="fklodb7xh4a2xjv39gc3lsop95n" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="role" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-74">-->
+<!--        <addForeignKeyConstraint baseColumnNames="regimen_line_id" baseTableName="regimen"-->
+<!--                                 constraintName="regimen_regimen_line_id_fkey" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="regimen_line" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-75">-->
+<!--        <addForeignKeyConstraint baseColumnNames="organisation_unit_id" baseTableName="form_data"-->
+<!--                                 constraintName="fkiuyrd5rubbtp9dmna9p4y5gb0" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="organisation_unit" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-76">-->
+<!--        <createIndex indexName="uk_msgp2h0jmt17kj329439hmixa" tableName="data_source" unique="true">-->
+<!--            <column name="name"/>-->
+<!--        </createIndex>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-77">-->
+<!--        <addForeignKeyConstraint baseColumnNames="organisation_unit_id"-->
+<!--                                 baseTableName="application_user_organisation_unit"-->
+<!--                                 constraintName="fkhf3c1pa7kplb098xvf6rktwe7" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="organisation_unit" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-78">-->
+<!--        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="application_user"-->
+<!--                                 constraintName="fk_user_person1" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+<!--                                 referencedTableName="person" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-79">-->
+<!--        <addForeignKeyConstraint baseColumnNames="current_organisation_unit_id" baseTableName="application_user"-->
+<!--                                 constraintName="fk6jmcuv0a111ljbthm2tj1vx54" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="organisation_unit" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-80">-->
+<!--        <addForeignKeyConstraint baseColumnNames="application_codeset_id"-->
+<!--                                 baseTableName="application_codeset_standard_codeset"-->
+<!--                                 constraintName="fk1jus66rosx8mht1vxid00ex6r" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="application_codeset" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-81">-->
+<!--        <addForeignKeyConstraint baseColumnNames="visit_type_id" baseTableName="visit"-->
+<!--                                 constraintName="visit_visit_type_id_fkey" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+<!--                                 referencedTableName="application_codeset" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-82">-->
+<!--        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="patient" constraintName="fk_patient_person1"-->
+<!--                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="person" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-83">-->
+<!--        <addUniqueConstraint columnNames="uuid" constraintName="patient_code_key" tableName="patient"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-84">-->
+<!--        <createIndex indexName="patient_patient_number_uindex" tableName="patient" unique="true">-->
+<!--            <column name="patient_number"/>-->
+<!--        </createIndex>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-85">-->
+<!--        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="radiology_test"-->
+<!--                                 constraintName="fk_group_id_radiology_test_group" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="radiology_test_group" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-86">-->
+<!--        <createIndex indexName="uk_ffy1tngx9fis6kmqn5c5qvhb0" tableName="form" unique="true">-->
+<!--            <column name="code"/>-->
+<!--        </createIndex>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-87">-->
+<!--        <addForeignKeyConstraint baseColumnNames="drug_group_id" baseTableName="drug" constraintName="drug_group_id_fk"-->
+<!--                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="drug_group" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-88">-->
+<!--        <addForeignKeyConstraint baseColumnNames="organisation_unit_id" baseTableName="organisation_unit_hierarchy"-->
+<!--                                 constraintName="organisation_unit_id_fk" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+<!--                                 referencedTableName="organisation_unit" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-89">-->
+<!--        <addForeignKeyConstraint baseColumnNames="organisation_unit_level_id"-->
+<!--                                 baseTableName="organisation_unit_hierarchy"-->
+<!--                                 constraintName="organisation_unit_level_id_fk" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="organisation_unit_level"-->
+<!--                                 validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-90">-->
+<!--        <addForeignKeyConstraint baseColumnNames="application_user_id" baseTableName="application_user_patient"-->
+<!--                                 constraintName="fk2u2gfjaplnk0fpdj309bpdkq1" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="application_user" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-91">-->
+<!--        <addForeignKeyConstraint baseColumnNames="organisation_unit_id" baseTableName="application_user_patient"-->
+<!--                                 constraintName="fkcnnk0glbdjhbe0o6ioq1bi5hv" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="organisation_unit" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-92">-->
+<!--        <addForeignKeyConstraint baseColumnNames="patient_id" baseTableName="application_user_patient"-->
+<!--                                 constraintName="fkrr4ugp8i60hhfx8p0t3sv406g" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="patient" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-93">-->
+<!--        <addForeignKeyConstraint baseColumnNames="drug_id" baseTableName="drug_inventory" constraintName="drug_id_fk"-->
+<!--                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="drug" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-94">-->
+<!--        <addForeignKeyConstraint baseColumnNames="regimen_id" baseTableName="regimen_drug"-->
+<!--                                 constraintName="regimen_id_fk" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+<!--                                 referencedTableName="regimen" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-95">-->
+<!--        <addUniqueConstraint columnNames="code" constraintName="program_code_key" tableName="program"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-96">-->
+<!--        <addForeignKeyConstraint baseColumnNames="organisation_unit_level_id" baseTableName="organisation_unit"-->
+<!--                                 constraintName="fk_organisation_level" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+<!--                                 referencedTableName="organisation_unit_level" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-97">-->
+<!--        <addForeignKeyConstraint baseColumnNames="patient_id" baseTableName="appointment"-->
+<!--                                 constraintName="fk4apif2ewfyf14077ichee8g06" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="patient" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-98">-->
+<!--        <addForeignKeyConstraint baseColumnNames="patient_id" baseTableName="sample_manifest"-->
+<!--                                 constraintName="fk_sample_manifest_patient_id" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="patient" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-99">-->
+<!--        <addForeignKeyConstraint baseColumnNames="module_id" baseTableName="menu"-->
+<!--                                 constraintName="fk1obs6w04f4923yr9ejg0054cd" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="module" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-100">-->
+<!--        <addForeignKeyConstraint baseColumnNames="standard_codeset_id"-->
+<!--                                 baseTableName="application_codeset_standard_codeset"-->
+<!--                                 constraintName="fk7rakobphuf1x8hqj09326h5si" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="standard_codeset" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-101">-->
+<!--        <addForeignKeyConstraint baseColumnNames="standard_codeset_source_id" baseTableName="standard_codeset"-->
+<!--                                 constraintName="standard_codeset_source_id_fk" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="standard_codeset_source"-->
+<!--                                 validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-102">-->
+<!--        <addForeignKeyConstraint baseColumnNames="patient_id" baseTableName="visit"-->
+<!--                                 constraintName="fk_patient_visit_patient1" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"-->
+<!--                                 referencedTableName="patient" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-103">-->
+<!--        <addForeignKeyConstraint baseColumnNames="program_code" baseTableName="encounter"-->
+<!--                                 constraintName="encounter_program_code_fkey" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="code" referencedTableName="program" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-104">-->
+<!--        <addForeignKeyConstraint baseColumnNames="patient_id" baseTableName="encounter" constraintName="fk_patient_id"-->
+<!--                                 deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="patient" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-105">-->
+<!--        <addForeignKeyConstraint baseColumnNames="form_code" baseTableName="encounter"-->
+<!--                                 constraintName="fkl126c2uxxdv4qnnx2qnj18mi0" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="code" referencedTableName="form" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-106">-->
+<!--        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="application_user_role"-->
+<!--                                 constraintName="fkf7adbyy81sxssravaxibiktx5" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="application_user" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-107">-->
+<!--        <addForeignKeyConstraint baseColumnNames="application_user_id"-->
+<!--                                 baseTableName="application_user_organisation_unit"-->
+<!--                                 constraintName="fkn6hxlqt4dj51b6iipo5x7oq9t" deferrable="false"-->
+<!--                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"-->
+<!--                                 referencedColumnNames="id" referencedTableName="application_user" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-108">-->
+<!--        <addForeignKeyConstraint baseColumnNames="program_code" baseTableName="form"-->
+<!--                                 constraintName="form_program_code_fkey" deferrable="false" initiallyDeferred="false"-->
+<!--                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="code"-->
+<!--                                 referencedTableName="program" validate="true"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-109">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="country_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-110">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="facility_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-111">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="hibernate_sequence" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-112">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="identifier_type_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-113">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="module_access_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-114">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="module_dependencies_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-115">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="module_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-116">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="patient_encounter_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-117">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="patient_visit_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-118">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="person_contact_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-119">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="person_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-120">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="person_relative_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-121">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="provider_codeset_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-122">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="provider_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-123">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="province_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-124">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="service_form_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-125">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="service_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-126">-->
+<!--        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807"-->
+<!--                        minValue="1" sequenceName="state_id_seq" startValue="1"/>-->
+<!--    </changeSet>-->
+<!--    <changeSet author="user10 (generated)" id="1617810791476-127">-->
+<!--        <createTable tableName="audit">-->
+<!--            <column name="identifier" type="VARCHAR(200)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="timestamp" type="TIMESTAMP WITHOUT TIME ZONE">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="actor" type="VARCHAR(200)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="origin" type="VARCHAR(200)"/>-->
+<!--            <column name="action" type="VARCHAR(200)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="elements" type="VARCHAR(70000)"/>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+<!--</databaseChangeLog>-->
+
+<!--
+To be add into application.yml
+ liquibase:-->
+<!--    change-log: classpath:/installers/changelog.xml-->
+
+<!--
+
+<dependency>-->
+<!--<groupId>org.liquibase</groupId>-->
+<!--<artifactId>liquibase-core</artifactId>-->
+<!--</dependency>-->

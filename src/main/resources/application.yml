@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/ddd?autoReconnect=true
+    username: postgres
+    password: Str0ngAdmInP@ssw0rd
+#    Str0ngAdmInP@ssw0rd
+  jpa:
+    hibernate:
+      use-new-id-generator-mappings: false
+  liquibase:
+    change-log: classpath:/installers/changelog.xml
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: dddapp.lib@gmail.com
+    password: "dddapp1@"
+    properties:
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.auth: true
+      jpa:
+        database-platform: org.hibernate.dialect.MySQL5Dialect
+
+
+logging:
+  file.name: logs/app.log
+  pattern:
+    console: "%d [%t] %-5level %logger{36} - %msg%n"
+    file: "%d [%t] %-5level %logger{36} - %msg%n"
+  level:
+    com.m2evorah: DEBUG
+    org.springframework: DEBUG
+    org.hibernate: DEBUG
+
+server:
+  port: 8080
+
+
+
+

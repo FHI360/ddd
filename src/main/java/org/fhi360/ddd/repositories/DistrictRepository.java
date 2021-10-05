@@ -1,0 +1,11 @@
+package org.fhi360.ddd.repositories;
+
+import org.fhi360.ddd.domain.District;
+import org.fhi360.ddd.domain.State;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface DistrictRepository extends JpaRepository<District,Long> {
+    List<District>  findByState(State state);
+}
